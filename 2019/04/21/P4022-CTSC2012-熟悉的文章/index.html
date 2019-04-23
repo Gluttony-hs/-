@@ -111,14 +111,14 @@
 
 
   <meta name="description" content="P4022 [CTSC2012]熟悉的文章传送门洛谷 题目描述阿米巴是小强的好朋友。 在小强眼中，阿米巴是一个作文成绩很高的文艺青年。为了获取考试作文的真谛，小强向阿米巴求教。阿米巴给小强展示了几篇作文，小强觉得这些文章怎么看怎么觉得熟悉，仿佛是某些范文拼拼凑凑而成的。小强不禁向阿米巴投去了疑惑的眼光，却发现阿米巴露出了一个狡黠的微笑。 为了有说服力地向阿米巴展示阿米巴的作文是多么让人觉得“眼熟”">
-<meta name="keywords" content="CTSC,后缀自动机">
+<meta name="keywords" content="后缀自动机,CTSC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="P4022 [CTSC2012]熟悉的文章">
 <meta property="og:url" content="http://yoursite.com/2019/04/21/P4022-CTSC2012-熟悉的文章/index.html">
 <meta property="og:site_name" content="HS的博客">
 <meta property="og:description" content="P4022 [CTSC2012]熟悉的文章传送门洛谷 题目描述阿米巴是小强的好朋友。 在小强眼中，阿米巴是一个作文成绩很高的文艺青年。为了获取考试作文的真谛，小强向阿米巴求教。阿米巴给小强展示了几篇作文，小强觉得这些文章怎么看怎么觉得熟悉，仿佛是某些范文拼拼凑凑而成的。小强不禁向阿米巴投去了疑惑的眼光，却发现阿米巴露出了一个狡黠的微笑。 为了有说服力地向阿米巴展示阿米巴的作文是多么让人觉得“眼熟”">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-21T08:54:47.111Z">
+<meta property="og:updated_time" content="2019-04-21T08:55:39.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="P4022 [CTSC2012]熟悉的文章">
 <meta name="twitter:description" content="P4022 [CTSC2012]熟悉的文章传送门洛谷 题目描述阿米巴是小强的好朋友。 在小强眼中，阿米巴是一个作文成绩很高的文艺青年。为了获取考试作文的真谛，小强向阿米巴求教。阿米巴给小强展示了几篇作文，小强觉得这些文章怎么看怎么觉得熟悉，仿佛是某些范文拼拼凑凑而成的。小强不禁向阿米巴投去了疑惑的眼光，却发现阿米巴露出了一个狡黠的微笑。 为了有说服力地向阿米巴展示阿米巴的作文是多么让人觉得“眼熟”">
@@ -452,7 +452,7 @@
                 
               
 
-              <time title="创建时间：2019-04-21 16:11:03 / 修改时间：16:54:47" itemprop="dateCreated datePublished" datetime="2019-04-21T16:11:03+08:00">2019-04-21</time>
+              <time title="创建时间：2019-04-21 16:11:03 / 修改时间：16:55:39" itemprop="dateCreated datePublished" datetime="2019-04-21T16:11:03+08:00">2019-04-21</time>
             
 
             
@@ -554,7 +554,7 @@
 <p>对于 50%的测试数据，输入文件的长度不超过 61000 字节。</p>
 <p>对于 80%的测试数据，输入文件的长度不超过 250000 字节。</p>
 <p>对于 100%的测试数据，输入文件的长度不超过 1100000 字节。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>$0pts：$不打或打炸。<br>看到求最小的最大值，想到二分。<br>证明一波：<br>很明显，对于大的可行的串，它的小的子串一定也可行(即，对于一个可行的L,小于它的L一定也可行)，反之不一定成立，满足单调性，所以可以二分。<br>那么怎么$check$呢？？？<br>想到DP<br>我们设$f_i$表示以$i$位置结尾时题意要求的最大值。<br>很容易写出转移方程如下：</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>$0pts：$不打或打炸。<br>看到求最小的最大值，想到二分。<br>证明一波：<br>很明显，对于大的可行的串，它的小的子串一定也可行(即，对于一个可行的L,小于它的L一定也可行)，反之不一定成立，满足单调性，所以可以二分。<br>那么怎么$check$呢？？？<br>想到DP。<br>我们设$f_i$表示以$i$位置结尾时题意要求的最大值。<br>很容易写出转移方程如下：</p>
 <script type="math/tex; mode=display">f_j=max(f_i-1,f_j+i-(j+1)+1),j \in [i-len_i,i-L]</script><p>其中，$len_i$表示符合题意要求的分割的最大值，即以$i$结尾的可以被匹配的01串的最大值。<br>直接搞，$60pts$到手。<br>但转念想想，正解(如果也是用这个DP方程的话)不可能直接暴力转移，不然就满分了，不会才$60pts$。<br>如果想要通过本题的话，复杂度应该是在$O(nlogn)$左右。<br>那么转移应该做到$O(1)$才行。<br>想想把$O(n)$的DP转移优化为$O(1)$的方法就那么几种。<br>再发现两个边界($i-len_i$,$i-L$)中第一个边界肯定是单调不降的，第二个边界是单调上升的，很容易理解和证明，这里省去证明。<br>于是想到单调队列优化DP。<br>稍微化一下式子就行了。<br>DP处理完了。<br>想一想$len_i$怎么求，发现这个东西在广义$SAM$上跑一下就行了。<br>另外，在打代码的时候注意一下循环语句的执行顺序，我就在把while改for的时候爆炸了。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 1000010</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;<span class="function"><span class="keyword">inline</span> T <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> T sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> cc=getchar();</span><br><span class="line">    <span class="keyword">int</span> sym=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(cc!=<span class="string">'-'</span>&amp;&amp;(cc&gt;<span class="string">'9'</span>||cc&lt;<span class="string">'0'</span>))cc=getchar();</span><br><span class="line">    <span class="keyword">if</span>(cc==<span class="string">'-'</span>)sym=<span class="number">-1</span>,cc=getchar();</span><br><span class="line">    sum=sum*<span class="number">10</span>+cc-<span class="string">'0'</span>;</span><br><span class="line">    cc=getchar();</span><br><span class="line">    <span class="keyword">while</span>(cc&gt;=<span class="string">'0'</span>&amp;&amp;cc&lt;=<span class="string">'9'</span>)sum=sum*<span class="number">10</span>+cc-<span class="string">'0'</span>,cc=getchar();</span><br><span class="line">    <span class="keyword">return</span> sym*sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;<span class="function"><span class="keyword">inline</span> T <span class="title">read</span><span class="params">(T &amp;a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    a=read&lt;T&gt;();</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T,<span class="keyword">typename</span>... Others&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T&amp; a, Others&amp;... b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    a=read(a);</span><br><span class="line">	read(b...);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,m,sl,cnt=<span class="number">1</span>,las,Q[maxn],f[maxn],match[maxn],len[maxn&lt;&lt;<span class="number">1</span>],fa[maxn&lt;&lt;<span class="number">1</span>],ch[maxn&lt;&lt;<span class="number">1</span>][<span class="number">2</span>];</span><br><span class="line"><span class="keyword">char</span> str[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> cc)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p=las,np=las=++cnt;</span><br><span class="line">	len[np]=len[p]+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(;p&amp;&amp;!ch[p][cc];p=fa[p])ch[p][cc]=np;</span><br><span class="line">	<span class="keyword">if</span>(!p)fa[np]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> q=ch[p][cc];</span><br><span class="line">		<span class="keyword">if</span>(len[q]==len[p]+<span class="number">1</span>)fa[np]=q;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> nq=++cnt;</span><br><span class="line">			len[nq]=len[p]+<span class="number">1</span>;</span><br><span class="line">			fa[nq]=fa[q];</span><br><span class="line">			<span class="built_in">memcpy</span>(ch[nq],ch[q],<span class="keyword">sizeof</span>(ch[q]));</span><br><span class="line">			fa[q]=fa[np]=nq;</span><br><span class="line">			<span class="keyword">for</span>(;p&amp;&amp;ch[p][cc]==q;p=fa[p])ch[p][cc]=nq;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Match</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p=<span class="number">1</span>,l=<span class="number">0</span>,c;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=sl;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		c=str[i]-<span class="string">'0'</span>;</span><br><span class="line">		<span class="keyword">if</span>(ch[p][c])p=ch[p][c],l+=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(;p&amp;&amp;!ch[p][c];p=fa[p]);</span><br><span class="line">			<span class="keyword">if</span>(p)l=len[p]+<span class="number">1</span>,p=ch[p][c];</span><br><span class="line">			<span class="keyword">else</span> p=<span class="number">1</span>,l=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		match[i]=l;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> h=<span class="number">1</span>,t=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=L<span class="number">-1</span>;i++)f[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=L;i&lt;=sl;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		f[i]=f[i<span class="number">-1</span>];</span><br><span class="line">		<span class="keyword">while</span>(h&lt;=t&amp;&amp;f[Q[t]]-Q[t]&lt;f[i-L]-(i-L))t-=<span class="number">1</span>;</span><br><span class="line">		Q[++t]=i-L;</span><br><span class="line">		<span class="keyword">while</span>(h&lt;=t&amp;&amp;Q[h]&lt;i-match[i])h+=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(h&lt;=t)f[i]=max(f[i],f[Q[h]]+i-Q[h]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> f[sl]*<span class="number">10</span>&gt;=sl*<span class="number">9</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	read(n,m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		las=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,str+<span class="number">1</span>);</span><br><span class="line">		sl=<span class="built_in">strlen</span>(str+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=sl;j++)add(str[j]-<span class="string">'0'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> tot=<span class="number">1</span>;tot&lt;=n;tot++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,str+<span class="number">1</span>);</span><br><span class="line">		sl=<span class="built_in">strlen</span>(str+<span class="number">1</span>);</span><br><span class="line">		Match();</span><br><span class="line">		<span class="keyword">int</span> l=<span class="number">0</span>,r=sl,ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(l&lt;=r)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(check(mid))ans=mid,l=mid+<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> r=mid<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
@@ -579,9 +579,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CTSC/" rel="tag"><i class="fa fa-tag"></i> CTSC</a>
-          
             <a href="/tags/后缀自动机/" rel="tag"><i class="fa fa-tag"></i> 后缀自动机</a>
+          
+            <a href="/tags/CTSC/" rel="tag"><i class="fa fa-tag"></i> CTSC</a>
           
         </div>
       
@@ -623,6 +623,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/23/BZOJ3277-串/" rel="prev" title="BZOJ3277 串">
+                BZOJ3277 串 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -701,7 +705,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -715,6 +719,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     
@@ -818,7 +824,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">14k</span>
+    <span title="站点总字数">17k</span>
   
 
   
@@ -827,7 +833,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">13 分钟</span>
+    <span title="站点阅读时长">16 分钟</span>
   
 </div>
 
