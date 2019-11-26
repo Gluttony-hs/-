@@ -111,14 +111,14 @@
 
 
   <meta name="description" content="BZOJ1396 识别子串传送门洛谷 题意描述A false witness that speaketh lies! You are given a sequence containing $ n $ integers. There is a variable $ res $ that is equal to $ 0 $ initially. The following process repea">
-<meta name="keywords" content="期望,DP">
+<meta name="keywords" content="DP,期望">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF891E Lust">
 <meta property="og:url" content="http://yoursite.com/2019/10/27/CF891E-Lust/index.html">
 <meta property="og:site_name" content="HS的博客">
 <meta property="og:description" content="BZOJ1396 识别子串传送门洛谷 题意描述A false witness that speaketh lies! You are given a sequence containing $ n $ integers. There is a variable $ res $ that is equal to $ 0 $ initially. The following process repea">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-27T14:25:05.801Z">
+<meta property="og:updated_time" content="2019-10-27T14:28:43.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF891E Lust">
 <meta name="twitter:description" content="BZOJ1396 识别子串传送门洛谷 题意描述A false witness that speaketh lies! You are given a sequence containing $ n $ integers. There is a variable $ res $ that is equal to $ 0 $ initially. The following process repea">
@@ -203,7 +203,7 @@
     </div>
     
       
-        <p class="site-subtitle">恭喜你发现了一只NOIP2019即将爆炸然后退役的蒟蒻</p>
+        <p class="site-subtitle">恭喜你发现了一只CSP2019已经爆炸并退役的蒟蒻</p>
       
     
     
@@ -448,7 +448,7 @@
                 
               
 
-              <time title="创建时间：2019-10-27 20:52:02 / 修改时间：22:25:05" itemprop="dateCreated datePublished" datetime="2019-10-27T20:52:02+08:00">2019-10-27</time>
+              <time title="创建时间：2019-10-27 20:52:02 / 修改时间：22:28:43" itemprop="dateCreated datePublished" datetime="2019-10-27T20:52:02+08:00">2019-10-27</time>
             
 
             
@@ -567,7 +567,7 @@ a_1 \times a_2 - E(d)\times (a_1+a_2) + E(d^2) \\
 =\sum_{i}(-1)^iE(d^i)v_{n-i}</script><p>这个$v_i$可以使用背包$DP$求出或者生成函数（$FFT$？）求得。<br>那么现在我们更应该考虑的是怎么求得$E(d^i)$。<br>先说结论。</p>
 <script type="math/tex; mode=display">
 E(d^i) \\
-=\cfrac{\sum_{j=k-i+1}^{k}j}{n^i}</script><p>开始讲这个式子是怎么来的，首先不考率这个期望的分母，分子就是一个计数问题。<br>你有一个长度为$k$的随机的数列，每个数都是$[1,n]$，定义一个排列的$t$权值为$1$的个数$\times$ $2$的个数$\times$…$\times$ $t$的个数，对于所有的$t$，所有数列的$t$权值之和。<br>这个问题又等价于你有一个长度为$k$的随机的数列，每个数都是$[1,n]$，定义一个排列的$t$权值为随意选出$t$的数，满足选出的第$i$个数就是$i$的方案数，求对于所有的$t$，所有数列的$t$权值之和。<br>这个问题求解办法就是我们考虑先把这$t$的数固定下来，其他的顺便填，即$\prod_{i=k}^{k-t+1}i \times n^{k-t}$，解释一下这个式子，我们挨着填这$t$个数，对于第$1$个数，它有$k$个位置可以填，对于第$2$个数，它有$k-1$个位置可以填，依此类推，就是$\prod_{i=k}^{k-t+1}i$，最后剩下的$k-t$的位置随便填，每个位置有$n$种填法，就是$n^{k-t}$。<br>那么带入期望的定义式</p>
+=\cfrac{\sum_{j=k-i+1}^{k}j}{n^i}</script><p>开始讲这个式子是怎么来的，首先不考率这个期望的分母，分子就是一个计数问题。<br>你有一个长度为$k$的随机的数列，每个数都是$[1,n]$，定义一个排列的$t$权值为$1$的个数$\times$ $2$的个数$\times$…$\times$ $t$的个数，对于所有的$t$，所有数列的$t$权值之和。<br>这个问题又等价于你有一个长度为$k$的随机的数列，每个数都是$[1,n]$，定义一个排列的$t$权值为随意选出$t$的数，满足选出的第$i$个数就是$i$的方案数，求对于所有的$t$，所有数列的$t$权值之和。<br>这个问题求解办法就是我们考虑先把这$t$的数固定下来，其他的顺便填，即$\prod_{i=k}^{k-t+1}i \times n^{k-t}$，解释一下这个式子，我们挨着填这$t$个数，对于第$1$个数，它有$k$个位置可以填，对于第$2$个数，它有$k-1$个位置可以填，依此类推，就是$\prod_{i=k}^{k-t+1}i$，最后剩下的$k-t$的位置随便填，每个位置有$n$种填法，就是$n^{k-t}$。<br>那么带入期望的定义式（上面说的$t$相当于下面的$i$）</p>
 <script type="math/tex; mode=display">
 E(d^i) \\
 =\cfrac{\prod_{j=k}^{k-i+1}j \times n^{k-i}}{n^k} \\
@@ -598,9 +598,9 @@ E(d^i) \\
       
         <div class="post-tags">
           
-            <a href="/tags/期望/" rel="tag"><i class="fa fa-tag"></i> 期望</a>
-          
             <a href="/tags/DP/" rel="tag"><i class="fa fa-tag"></i> DP</a>
+          
+            <a href="/tags/期望/" rel="tag"><i class="fa fa-tag"></i> 期望</a>
           
         </div>
       
